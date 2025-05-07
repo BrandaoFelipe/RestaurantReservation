@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Builder
 @Entity
-@Table(name = "tb_reservationTable")
+@Table(name = "tb_reservation_table")
 public class TableReservation {
 
     @Id
@@ -34,6 +34,6 @@ public class TableReservation {
     private Reservation reservation;
     
     @ManyToOne
-    @JoinColumn(name = "restaurantTable_id")
+    @JoinColumn(name = "restaurant_table_id")
     private RestaurantTable restaurantTable;
 }

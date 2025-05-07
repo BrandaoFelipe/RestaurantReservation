@@ -16,5 +16,5 @@ public class RestaurantTableDTO {
 
     private Long id;
     private Integer number;
-    private Integer capacity;
+    private Integer capacity;   
 }

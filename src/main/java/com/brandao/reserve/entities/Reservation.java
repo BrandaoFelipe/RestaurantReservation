@@ -13,7 +13,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -42,4 +41,6 @@ public class Reservation {
     @Builder.Default
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
     private List<TableReservation> reservations = new ArrayList<>();
-}
+
+    
+} 

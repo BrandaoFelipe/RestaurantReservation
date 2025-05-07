@@ -6,28 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brandao.reserve.dtos.ClientDTO;
-import com.brandao.reserve.entities.Client;
-import com.brandao.reserve.mappers.ClientMapper;
-import com.brandao.reserve.repositories.ClientRepository;
+import com.brandao.reserve.dtos.RestaurantTableDTO;
+import com.brandao.reserve.entities.RestaurantTable;
+import com.brandao.reserve.mappers.RestaurantTableMapper;
+import com.brandao.reserve.repositories.RestaurantTableRepository;
 import com.brandao.reserve.services.handlers.EmptyResultException;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ClientService {
+public class RestaurantTableService {
 
     @Autowired
-    private final ClientRepository repository;
+    private final RestaurantTableRepository repository;
 
     @Autowired
-    private final ClientMapper mapper;
+    private final RestaurantTableMapper mapper;
 
     @Transactional(readOnly = true)
-    public List<ClientDTO> findAll() {
+    public List<RestaurantTableDTO> findAll() {
 
-        List<Client> entities = repository.findAll();
+        List<RestaurantTable> entities = repository.findAll();
         if (entities.isEmpty()) {
 
             throw new EmptyResultException("Nothing found");
@@ -37,12 +37,14 @@ public class ClientService {
     }
 
     @Transactional(readOnly = true)
-    public ClientDTO findById(Long id) {
+    public RestaurantTableDTO findById(Long id) {
 
-        Client entity = repository.findById(id)
-        .orElseThrow(() -> new EmptyResultException("Client not found with id: " + id));
+        RestaurantTable entity = repository.findById(id)
+        .orElseThrow(() -> new EmptyResultException("Table not found with id: " + id));
     
     return mapper.toDTO(entity);
     }
+
+    
 
 }

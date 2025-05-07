@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,25 +18,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_restaurantTable")
+@Table(name = "tb_restaurant_table")
 public class RestaurantTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer number;
-    private Integer capacity;
+    private Integer capacity;   
 
     @Builder.Default
     @OneToMany(mappedBy = "restaurantTable", cascade = CascadeType.ALL)
     private List<TableReservation> reservations = new ArrayList<>();
 
-    public boolean IsReserved() {
-        return false;
-    }
+    
 }

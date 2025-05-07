@@ -21,7 +21,7 @@ public class RestaurantTableMapper {
         return RestaurantTableDTO.builder()
         .id(entity.getId())
         .number(entity.getNumber())
-        .capacity(entity.getCapacity())
+        .capacity(entity.getCapacity())        
         .build();
     }
 
@@ -31,7 +31,7 @@ public class RestaurantTableMapper {
         return RestaurantTable.builder()
         .id(dto.getId())
         .number(dto.getNumber())
-        .capacity(dto.getCapacity())
+        .capacity(dto.getCapacity())       
         .build();
     }
 
@@ -58,6 +58,6 @@ public class RestaurantTableMapper {
         }
 
         return list;
-    }
+    }  
 
 }
