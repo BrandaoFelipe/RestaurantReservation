@@ -20,60 +20,62 @@ import com.brandao.reserve.dtos.requestsDTO.ReservationRequestDTO;
 import com.brandao.reserve.dtos.responseDTOs.ReservationResponseDTO;
 import com.brandao.reserve.services.ReservationService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/reservations")
 public class ReservationController {
 
     @Autowired
-    private  ReservationService service;
+    private ReservationService service;
 
     // @GetMapping
     // public ResponseEntity<List<ReservationResponseDTO>>findAll(){
-        
-    //     return ResponseEntity.ok(service.findAll());
+
+    // return ResponseEntity.ok(service.findAll());
     // }
 
     @GetMapping
-    public ResponseEntity<List<ReservationResponseDTO>>findbyCpf(@RequestParam String cpf){
-        
+    public ResponseEntity<List<ReservationResponseDTO>> findbyCpf(@RequestParam String cpf) {
+
         return ResponseEntity.ok(service.findByClientCpf(cpf));
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ReservationResponseDTO>findById(@PathVariable Long id){
-        
+    public ResponseEntity<ReservationResponseDTO> findById(@PathVariable Long id) {
+
         return ResponseEntity.ok(service.findById(id));
-       
+
     }
 
-     @PostMapping
-    public ResponseEntity<ReservationResponseDTO>createClient(@RequestBody ReservationRequestDTO dto){
+    @PostMapping
+    public ResponseEntity<ReservationResponseDTO> createClient(
+            @Valid @RequestBody(required = true) ReservationRequestDTO dto) {
 
         var responseDto = service.createReservation(dto);
-        
+
         URI uri = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(responseDto.getId())
-                    .toUri();
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(responseDto.getId())
+                .toUri();
 
         return ResponseEntity.created(uri).body(responseDto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ReservationResponseDTO>updateClient(@RequestBody ReservationRequestDTO dto, @PathVariable Long id){
+    public ResponseEntity<ReservationResponseDTO> updateClient(@RequestBody ReservationRequestDTO dto,
+            @PathVariable Long id) {
 
-        return ResponseEntity.ok(service.updateClient(dto, id));
+        return ResponseEntity.ok(service.updateReservation(dto, id));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?>deleteClient(@PathVariable Long id){
+    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
 
-        service.deleteClient(id);
+        service.deleteReservation(id);
 
         return ResponseEntity.noContent().build();
     }
 
-    
-    
 }

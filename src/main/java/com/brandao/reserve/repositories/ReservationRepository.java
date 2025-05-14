@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.brandao.reserve.entities.Client;
 import com.brandao.reserve.entities.Reservation;
-import com.brandao.reserve.entities.RestaurantTable;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
@@ -22,12 +20,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     public List<Reservation> reservationByClientCpf(@Param("cpf") String cpf);
 
 
-    @Query(nativeQuery = true, value = "SELECT * FROM TB_CLIENT CLI WHERE CLI.CPF = :cpf" )
-    public Client getClient(@Param("cpf") String cpf);
+    
 
     
-    @Query(nativeQuery = true, value = "SELECT * FROM TB_RESTAURANT_TABLE AS TB WHERE TB.TABLE_NUMBER IN (:tableNumber)" )
-    public List<RestaurantTable> getTable(@Param("tableNumber") List<Integer> tableNumber);
+    
 
 
 
