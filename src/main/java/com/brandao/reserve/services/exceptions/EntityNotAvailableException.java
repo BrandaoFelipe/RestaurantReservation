@@ -1,4 +1,4 @@
-package com.brandao.reserve.services.handlers;
+package com.brandao.reserve.services.exceptions;
 
 public class EntityNotAvailableException extends RuntimeException{
 

@@ -1,4 +1,4 @@
-package com.brandao.reserve.dtos;
+package com.brandao.reserve.dtos.responseDTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,9 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class RestaurantTableDTO {
+public class RestaurantTableResponseDTO {
 
     private Long id;
-    private Integer number;
+    private Integer tableNumber;
     private Integer capacity;   
 }

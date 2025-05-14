@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("@builder")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,12 +31,15 @@ public class RestaurantTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer number;
-    private Integer capacity;   
+
+    @Column(nullable = false)
+    private Integer tableNumber;
+
+    @Column(nullable = false)
+    private Integer capacity;
 
     @Builder.Default
     @OneToMany(mappedBy = "restaurantTable", cascade = CascadeType.ALL)
     private List<TableReservation> reservations = new ArrayList<>();
 
-    
 }

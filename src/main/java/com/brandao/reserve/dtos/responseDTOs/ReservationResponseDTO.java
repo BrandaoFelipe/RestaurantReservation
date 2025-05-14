@@ -1,4 +1,4 @@
-package com.brandao.reserve.dtos;
+package com.brandao.reserve.dtos.responseDTOs;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,12 +15,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ReservationMinimalDTO {
-
+public class ReservationResponseDTO {
+    
     private Integer id;
-    private LocalDateTime dateTime;
+    
+    private LocalDateTime beginReservation;
+
+    private LocalDateTime endReservation;
+
     private Integer numberOfPeople;
+
+    private ClientResponseDTO clientResponseDTO;
     
     @Builder.Default
-    private List<RestaurantTableDTO> tables = new ArrayList<>();
+    private List<RestaurantTableResponseDTO> tables = new ArrayList<>();
 }

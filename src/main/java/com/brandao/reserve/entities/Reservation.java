@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,16 +32,22 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime dateTime;
+
+    @Column(nullable = false)
+    private LocalDateTime beginReservation;
+
+    @Column(nullable = false)
+    private LocalDateTime endReservation;
+
+    @Column(nullable = false)
     private Integer numberOfPeople;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @Builder.Default
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
     private List<TableReservation> reservations = new ArrayList<>();
-
     
 } 

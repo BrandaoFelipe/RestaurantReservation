@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Builder
 @Entity
-@Table(name = "tb_reservation_table")
+@Table(name = "tb_table_reservation")
 public class TableReservation {
 
     @Id

@@ -1,7 +1,4 @@
-package com.brandao.reserve.dtos;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.brandao.reserve.dtos.responseDTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,16 +12,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ClientDTO {
-
-    private Long id;
-
-    private String name;
+public class ClientResponseDTO {
     
+    private Long id;
+    private String name;
+    private String cpf;
     private String email;
-
     private String phoneNumber;
-      
-    @Builder.Default
-    private List<ReservationMinimalDTO> reservations = new ArrayList<>();
+    
 }
