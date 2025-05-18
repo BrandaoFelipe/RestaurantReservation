@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,44 +28,49 @@ public class ClientController {
     private ClientService service;
 
     @GetMapping
-    public ResponseEntity<List<ClientResponseDTO>>findAll(){
-        
+    public ResponseEntity<List<ClientResponseDTO>> findAll() {
+
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ClientResponseDTO>findById(@PathVariable Long id){
-        
+    public ResponseEntity<ClientResponseDTO> findById(@PathVariable Long id) {
+
         return ResponseEntity.ok(service.findById(id));
-       
+
     }
 
     @PostMapping
-    public ResponseEntity<ClientResponseDTO>createClient(@RequestBody ClientRequestDTO dto){
+    public ResponseEntity<ClientResponseDTO> createClient(@RequestBody ClientRequestDTO dto) {
 
         var responseDto = service.createClient(dto);
-        
+
         URI uri = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(responseDto.getId())
-                    .toUri();
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(responseDto.getId())
+                .toUri();
 
         return ResponseEntity.created(uri).body(responseDto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ClientResponseDTO>updateClient(@RequestBody ClientRequestDTO dto, @PathVariable Long id){
+    public ResponseEntity<ClientResponseDTO> updateClient(@RequestBody ClientRequestDTO dto, @PathVariable Long id) {
 
         return ResponseEntity.ok(service.updateClient(dto, id));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?>deleteClient(@PathVariable Long id){
+    public ResponseEntity<?> deleteClient(@PathVariable Long id) {
 
         service.deleteClient(id);
 
         return ResponseEntity.noContent().build();
     }
-    
+
+    @GetMapping("/encode")
+    public String encodePassword() {
+        return new BCryptPasswordEncoder().encode("123lotr");
+    }
+
 }

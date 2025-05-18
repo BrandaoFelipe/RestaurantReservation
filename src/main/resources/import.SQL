@@ -16,3 +16,16 @@ INSERT INTO tb_reservation (begin_reservation, end_reservation, number_of_people
 INSERT INTO tb_table_reservation (reservation_id, restaurant_table_id) VALUES (1, 2);
 INSERT INTO tb_table_reservation (reservation_id, restaurant_table_id) VALUES (2, 1);
 INSERT INTO tb_table_reservation (reservation_id, restaurant_table_id) VALUES (2, 3);
+
+--Criação de usuarios
+INSERT INTO tb_user (name, email, password) VALUES ('lotr', 'lotr@gmail.com', '$2a$10$So43N763dyUlDNLg06nfJO1boel./NDjLdjHhkW13.ldaGSgywBLC'); --123lotr
+INSERT INTO tb_user (name, email, password) VALUES ('Alicio Black', 'black@gmail.com', '$2a$10$ddU12S3pehDptZJ5M4QubOvPVTSszhF31gMwzRYgkwzrc6P0u0mF.');--123black
+
+--Criação de roles
+INSERT INTO tb_role (user_role) VALUES ('ROLE_ADMIN');
+INSERT INTO tb_role (user_role) VALUES ('ROLE_USER');
+
+--Associação de user_id com roles_id
+INSERT INTO tb_user_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO tb_user_roles (user_id, role_id) VALUES (1, 2);
+INSERT INTO tb_user_roles (user_id, role_id) VALUES (2, 2);
