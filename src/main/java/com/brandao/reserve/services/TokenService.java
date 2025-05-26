@@ -30,6 +30,8 @@ public class TokenService {
             .withExpiresAt(getTokenExpiration())
             .sign(algorithm);
 
+            System.out.println("Authorities: " + user.getAuthorities());
+
             return token;
 
         } catch (JWTCreationException e) {

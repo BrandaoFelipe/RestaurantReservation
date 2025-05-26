@@ -31,12 +31,10 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/auth/register").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-
-
                 .build();
     }
 

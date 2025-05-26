@@ -12,6 +12,7 @@ import com.brandao.reserve.dtos.CustomError;
 import com.brandao.reserve.services.exceptions.EmptyResultException;
 import com.brandao.reserve.services.exceptions.EntityNotAvailableException;
 import com.brandao.reserve.services.exceptions.InvalidRequestException;
+import com.brandao.reserve.services.exceptions.NotAllawedException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -48,6 +49,15 @@ public class ControllerExceptionHandler {
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomError>  handleValidationErrors(MethodArgumentNotValidException e, HttpServletRequest request){
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(NotAllawedException.class)
+    public ResponseEntity<CustomError>  notAllawedExeption(NotAllawedException e, HttpServletRequest request){
 
         HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());

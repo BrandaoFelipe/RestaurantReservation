@@ -1,6 +1,5 @@
 package com.brandao.reserve.entities;
 import java.util.Collection;
-
 import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +16,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @EqualsAndHashCode
 @Table(name = "tb_user")
 public class User implements UserDetails{
@@ -46,10 +47,21 @@ public class User implements UserDetails{
     @JoinTable(name = "tb_user_roles", joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles;
+    
+    
+    public User(String name, String email, String password, Set<Roles> roles) {
+      this.name = name;
+      this.email = email;
+      this.password = password;
+      
+      for(Roles role : this.roles){
+         this.roles.add(role);
+      }      
+   }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       return roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getUserRole())).toList();
+       return roles.stream().map(role -> new SimpleGrantedAuthority(role.getUserRole())).toList();
     }
 
     @Override
