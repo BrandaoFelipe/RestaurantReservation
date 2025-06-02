@@ -1,26 +1,31 @@
 package com.brandao.reserve.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
+
 @Configuration
 public class WebConfig {
 
-    @Value("${cors.origins}")
-    private String corsOrigins;
-
     @Bean
-    WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @SuppressWarnings("null")
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedMethods("*").allowedOrigins(corsOrigins);
+                registry.addMapping("/**")
+                    .allowedOrigins(
+                        "http://localhost:5173", // Seu frontend local
+                        "https://seu-frontend.com" // Seu domínio em produção
+                    )
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
+                    .allowedHeaders("*")
+                    .allowCredentials(true)
+                    .maxAge(3600); // Cache de 1 hora para preflight
             }
         };
     }
-
 }
