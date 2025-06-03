@@ -17,14 +17,11 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOrigins(
-                        "http://localhost:5173", // Seu frontend local
-                        "https://seu-frontend.com" // Seu domínio em produção
-                    )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
+                    .allowedOrigins("http://localhost:5173") // <<< nunca use "*"
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true)
-                    .maxAge(3600); // Cache de 1 hora para preflight
+                    .exposedHeaders("Set-Cookie");
             }
         };
     }
