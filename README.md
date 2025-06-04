@@ -1,3 +1,139 @@
+EN
+# 🍽️ Restaurant Reservation System
+
+A full-featured system for managing restaurant reservations, including authentication, user access control, and table management. Developed as a full stack project using **Spring Boot** for the backend and **React** for the frontend.
+
+---
+
+## 🚀 Technologies Used
+
+### Backend
+- Java 17  
+- Spring Boot  
+- Spring Security (form-based login)  
+- Spring Data JPA + Hibernate  
+- Relational Database (e.g., PostgreSQL or H2)  
+- Maven
+
+### Frontend
+- React  
+- Vite  
+- React Router  
+- Axios  
+- TailwindCSS
+
+---
+
+## 🔐 Features Implemented
+
+### Backend
+- User registration and login  
+- Role-based access control (user/admin)  
+- Many-to-Many relationship between users and roles  
+- Session management with Spring Security  
+- RESTful API for reservation operations (in progress)
+
+### Frontend
+- Login interface  
+- Protected routes based on authentication  
+- Backend integration via Axios  
+- Responsive, modern layout with TailwindCSS  
+- Dashboard page (in development)
+
+---
+
+## 📌 Project Structure
+
+```bash
+RestaurantReservation/
+├── backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/brandao/reservation/
+│   │   │   │   ├── controller/
+│   │   │   │   ├── entity/
+│   │   │   │   ├── repository/
+│   │   │   │   ├── security/
+│   │   │   │   └── service/
+│   │   └── resources/
+│   │       └── application.properties
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── App.jsx
+└── README.md
+```
+
+---
+
+## 🧪 Running the Project Locally
+
+### Prerequisites
+
+- Java 17  
+- Node.js (v18+)  
+- Maven  
+- PostgreSQL or H2 (depending on selected profile)
+
+### Steps
+
+#### 1. Backend
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+> Server will start at: `http://localhost:8080`
+
+#### 2. Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+> Frontend will be served at: `http://localhost:5173`  
+> Frontend repository: [`reservation_restaurant_front`](https://github.com/BrandaoFelipe/reservation_restaurant_front)
+
+---
+
+## ✅ Project Status
+
+- [x] Authentication with Spring Security  
+- [x] Role-based access control  
+- [x] Protected frontend navigation  
+- [x] CRUD operations for tables and reservations  
+- [x] Schedule and availability management  
+- [x] Admin dashboard  
+- [ ] Backend/frontend integration (in progress)
+
+---
+
+## 🧠 Project Motivation
+
+This project is part of a personal career transition plan into the tech industry, aiming for full mastery of **Full Stack Java + React** development. The main goals include consolidating knowledge in:
+
+- RESTful architecture best practices  
+- Web application security and authentication  
+- Seamless integration between frontend and backend using modern tools
+
+---
+
+## 🤝 Contributions
+
+This is a personal project, but feedback is always welcome. Suggestions, issues, and pull requests will be reviewed thoughtfully.
+
+---
+
+## 📫 Contact
+
+Built with dedication by [Felipe Brandão](https://github.com/BrandaoFelipe).  
+Let’s connect on [LinkedIn](https://www.linkedin.com/in/felipe-brandao-08595722a).
+
+
+PT
 # 🍽️ Restaurant Reservation System
 
 Sistema completo de gerenciamento de reservas para restaurantes, com autenticação, controle de usuários e gerenciamento de mesas. Desenvolvido como projeto full stack utilizando **Spring Boot** no backend e **React** no frontend.
