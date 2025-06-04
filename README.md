@@ -44,26 +44,34 @@ A full-featured system for managing restaurant reservations, including authentic
 
 ## 📌 Project Structure
 
+## 📁 Project Structure
+
 ```bash
 RestaurantReservation/
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/brandao/reservation/
-│   │   │   │   ├── controller/
-│   │   │   │   ├── entity/
-│   │   │   │   ├── repository/
-│   │   │   │   ├── security/
-│   │   │   │   └── service/
+├── src/
+│   ├── main/
+│   │   ├── java/com/brandao/reserve/
+│   │   │   ├── config/
+│   │   │   ├── controllers/
+│   │   │   ├── dtos/
+│   │   │   │   ├── requestsDTO/
+│   │   │   │   └── responseDTOs/
+│   │   │   ├── validators/
+│   │   │   ├── entities/
+│   │   │   ├── mappers/
+│   │   │   ├── repositories/
+│   │   │   ├── services/
+│   │   │   ├── exceptions/
+│   │   │   └── ReserveApplication.java
 │   │   └── resources/
-│   │       └── application.properties
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── App.jsx
-└── README.md
+│   │       ├── META-INF/
+│   │       ├── application.properties
+│   │       ├── application-dev.properties
+│   │       ├── application-prod.properties
+│   │       ├── application-test.properties
+│   │       └── import.SQL
+│   └── test/java/com/brandao/reserve/
+├── system.properties
 ```
 
 ---
@@ -88,12 +96,6 @@ cd backend
 > Server will start at: `http://localhost:8080`
 
 #### 2. Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 > Frontend will be served at: `http://localhost:5173`  
 > Frontend repository: [`reservation_restaurant_front`](https://github.com/BrandaoFelipe/reservation_restaurant_front)
 
@@ -180,25 +182,32 @@ Sistema completo de gerenciamento de reservas para restaurantes, com autenticaç
 ## 📌 Estrutura do Projeto
 
 ```bash
+```bash
 RestaurantReservation/
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/brandao/reservation/
-│   │   │   │   ├── controller/
-│   │   │   │   ├── entity/
-│   │   │   │   ├── repository/
-│   │   │   │   ├── security/
-│   │   │   │   └── service/
+├── src/
+│   ├── main/
+│   │   ├── java/com/brandao/reserve/
+│   │   │   ├── config/
+│   │   │   ├── controllers/
+│   │   │   ├── dtos/
+│   │   │   │   ├── requestsDTO/
+│   │   │   │   └── responseDTOs/
+│   │   │   ├── validators/
+│   │   │   ├── entities/
+│   │   │   ├── mappers/
+│   │   │   ├── repositories/
+│   │   │   ├── services/
+│   │   │   ├── exceptions/
+│   │   │   └── ReserveApplication.java
 │   │   └── resources/
-│   │       └── application.properties
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── App.jsx
-└── README.md
+│   │       ├── META-INF/
+│   │       ├── application.properties
+│   │       ├── application-dev.properties
+│   │       ├── application-prod.properties
+│   │       ├── application-test.properties
+│   │       └── import.SQL
+│   └── test/java/com/brandao/reserve/
+├── system.properties
 ```
 
 ---
@@ -223,13 +232,7 @@ cd backend
 > O servidor será iniciado em: `http://localhost:8080`
 
 #### 2. Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-> O frontend será servido em: `http://localhost:5173`
+> Frontend será servido em: `http://localhost:5173`  
 >Link do projeto frontend: `https://github.com/BrandaoFelipe/reservation_restaurant_front`
 
 ---
